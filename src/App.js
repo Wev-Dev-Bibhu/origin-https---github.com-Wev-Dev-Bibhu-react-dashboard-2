@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import Dashboard from './components/Dashboard';
+import NavigationBar from './components/NavigationBar';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import PageNotFound from './components/PageNotFound';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+      <BrowserRouter>
+        <NavigationBar />
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+        <Routes>
+          <Route path="/dashboard" element={<PageNotFound />} />
+          <Route path="/recent" element={<PageNotFound />} />
+          <Route path="/settings" element={<PageNotFound />} />
+          <Route path="/profile" element={<PageNotFound />} />
+          <Route path="/events" element={<PageNotFound />} />
+          <Route path="/boards" element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
